@@ -4,7 +4,7 @@ from typing import Any
 import os
 import json
 
-class Settings():
+class Settings:
     g_settings:dict[str, Any]={}
     g_settingsFilename: str=""
 
