@@ -1,4 +1,3 @@
-from __future__ import annotations
 from typing import Any
 
 import os
@@ -15,7 +14,7 @@ class Settings:
     g_dictname: str=""
 
     def __init__(self, fname: str=""):
-        print(f"Settings({fname=})")
+        #print(f"Settings({fname=})")
         Settings.g_dictname=fname
         if fname not in Settings.g_dicts:
             Settings.g_dicts[fname]=("", {})
@@ -60,7 +59,7 @@ class Settings:
 
         # OK, either the settings file exists or we don't care if it exists or not.
         # (If it doesn't exist, it will be created on save.)
-        print(f"{pathname=} exists? {os.path.exists(pathname)}")
+        #print(f"{pathname=} exists? {os.path.exists(pathname)}")
         with open(pathname, "r") as file:
             lines=file.read()
             if len(lines) > 0:
@@ -71,14 +70,14 @@ class Settings:
 
     def Put(self, name: str, val: Any) -> None:
         self.Dict[name]=val
-        print(f"Put({self.g_dictname}) {name}={val}")
+        #print(f"Put({self.g_dictname}) {name}={val}")
         self.Save()
 
     def Get(self, name: str, default: Any=None) -> Any:
         if name not in self.Dict.keys():
             print(f"Get({self.g_dictname}) {name}={default}")
             return default
-        print(f"Get({self.g_dictname}) {name}={self.Dict[name]}")
+        #print(f"Get({self.g_dictname}) {name}={self.Dict[name]}")
         return self.Dict[name]
 
     # Dump out the settings as dict pairs
