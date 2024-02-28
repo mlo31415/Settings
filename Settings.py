@@ -42,6 +42,7 @@ class Settings:
             with open(self.Dictpath, "w+") as file:
                 file.write(json.dumps(self.Dict))
 
+    # Load the settings file.  It can be either .json or .txt (the latter being a list of names followed by values)
     def Load(self, pathname: str, MustExist: bool=False, SuppressMessageBox: bool=False) -> bool:
         if MustExist and not os.path.exists(pathname):
             if not SuppressMessageBox:
@@ -73,6 +74,7 @@ class Settings:
         #print(f"Put({self.g_dictname}) {name}={val}")
         self.Save()
 
+    # Get a parameter from the settings dictionary
     def Get(self, name: str, default: Any=None) -> Any:
         if name not in self.Dict.keys():
             print(f"Get({self.g_dictname}) {name}={default}")
