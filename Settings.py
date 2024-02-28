@@ -53,7 +53,7 @@ class Settings:
             assert True     # TODO: Need to reconcile ParmDict with Dict
             self.Dict=ReadListAsParmDict(pathname, isFatal=True)
             if self.Dict is None or len(self.Dict) == 0:
-                MessageLog(f"Can't open/read {os.getcwd()}/parameters.txt")
+                MessageLog(f"Can't open/read {pathname}")
                 exit(999)
             Settings.g_settingsFilename=os.path.join(os.getcwd(), pathname)
             return True
