@@ -10,6 +10,7 @@ class Settings:
     # Each name returns a string and a dict.
     #   The string is the dict's source pathname
     #   The dict is the dictionary of parameters loaded from it.
+    #   Dicts are accessed case-insensitive
     g_dicts: dict[str, tuple[str, dict[str, Any]]]={}
     g_dictname: str=""
 
@@ -75,12 +76,17 @@ class Settings:
         self.Save()
 
     # Get a parameter from the settings dictionary
+    # Names are matched case-insensitive
     def Get(self, name: str, default: Any=None) -> Any:
-        if name not in self.Dict.keys():
+        keys=[x for x in self.Dict.keys()]
+        kikeys=[x.casefold() for x in self.Dict.keys()]
+        name=name.casefold()
+        if name not in kikeys:
             print(f"Get({self.g_dictname}) {name}={default}")
             return default
+        loc=kikeys.index(name)
         #print(f"Get({self.g_dictname}) {name}={self.Dict[name]}")
-        return self.Dict[name]
+        return self.Dict[keys[loc]]
 
     # Dump out the settings as dict pairs
     def Dump(self) -> str:
