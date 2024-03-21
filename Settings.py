@@ -62,7 +62,7 @@ class Settings:
             if self.Dict is None or len(self.Dict) == 0:
                 MessageLog(f"Can't open/read {pathname}")
                 exit(999)
-            Settings.g_settingsFilename=os.path.join(os.getcwd(), pathname)
+            self.Dictpath=os.path.join(os.getcwd(), pathname)
             return True
 
         # OK, either the settings file exists or we don't care if it exists or not.
