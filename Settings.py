@@ -41,7 +41,13 @@ class Settings:
     def Save(self) -> None:
         if len(self.Dictpath) > 0:
             with open(self.Dictpath, "w+") as file:
-                file.write(json.dumps(self.Dict))
+                if os.path.splitext(self.Dictpath)[1].lower() == ".txt":
+                    lst="\n".join([f"{x}={y}" for x, y in self.Dict.items()])
+                    file.write(lst)
+                elif os.path.splitext(self.Dictpath)[1].lower() == ".json":
+                    file.write(json.dumps(self.Dict))
+                else:
+                    MessageBox(f"Can't save. Settings file '{self.Dictpath}' has an extension other than 'txt' or 'json'", ignoredebugger=True)
 
     # Load the settings file.  It can be either .json or .txt (the latter being a list of names followed by values)
     def Load(self, pathname: str, MustExist: bool=False, SuppressMessageBox: bool=False) -> bool:
