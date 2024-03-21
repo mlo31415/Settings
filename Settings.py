@@ -49,7 +49,7 @@ class Settings:
                 else:
                     MessageBox(f"Can't save. Settings file '{self.Dictpath}' has an extension other than 'txt' or 'json'", ignoredebugger=True)
 
-    # Load the settings file.  It can be either .json or .txt (the latter being a list of names followed by values)
+    # Load a settings file.  It can be either .json or .txt (the latter being a list of names followed '=' followed by values)
     def Load(self, pathname: str, MustExist: bool=False, SuppressMessageBox: bool=False) -> bool:
         if MustExist and not os.path.exists(pathname):
             if not SuppressMessageBox:
