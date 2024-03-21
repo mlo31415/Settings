@@ -94,6 +94,14 @@ class Settings:
         #print(f"Get({self.g_dictname}) {name}={self.Dict[name]}")
         return self.Dict[keys[loc]]
 
+    # Return True if Name exists and is (case-inseneitive) Yes or True
+    def IsTrue(self, name: str, default: bool=False) -> bool:
+        ret=self.Get(name, default).lower()
+        if isinstance(ret, bool):
+            return ret
+        return ret == "true" or ret == "yes"
+
+
     # Dump out the settings as dict pairs
     def Dump(self) -> str:
         s=""
