@@ -16,9 +16,9 @@ class Settings:
 
     def __init__(self, fname: str=""):
         #print(f"Settings({fname=})")
-        Settings.g_dictname=fname
+        Settings.g_dictname=fname       # This is the name of the dictionary to be used.
         if fname not in Settings.g_dicts:
-            Settings.g_dicts[fname]=("", {})
+            Settings.g_dicts[fname]=("", {})        # If a new dictionary has been requested, create it.
 
     @property
     def Dict(self) -> dict[str, Any]:
