@@ -88,7 +88,6 @@ class Settings:
         kikeys=[x.casefold() for x in self.Dict.keys()]
         name=name.casefold()
         if name not in kikeys:
-            print(f"Get({self.g_dictname}) {name}={default}")
             return default
         loc=kikeys.index(name)
         #print(f"Get({self.g_dictname}) {name}={self.Dict[name]}")
