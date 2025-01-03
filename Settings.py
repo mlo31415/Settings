@@ -67,11 +67,11 @@ class Settings:
 
         # OK, either the settings file exists or we don't care if it exists or not.
         # (If it doesn't exist, it will be created on save.)
-        #print(f"{pathname=} exists? {os.path.exists(pathname)}")
-        with open(pathname, "r") as file:
-            lines=file.read()
-            if len(lines) > 0:
-                self.Dict=json.loads(lines)
+        if os.path.exists(pathname) or MustExist:
+            with open(pathname, "r") as file:
+                lines=file.read()
+                if len(lines) > 0:
+                    self.Dict=json.loads(lines)
         self.Dictpath=os.path.join(os.getcwd(), pathname)
         return True
 
