@@ -95,9 +95,10 @@ class Settings:
 
     # Return True if Name exists and is (case-insensitive) Yes or True
     def IsTrue(self, name: str, default: bool=False) -> bool:
-        ret=self.Get(name, default).lower()
+        ret=self.Get(name, default)
         if isinstance(ret, bool):
             return ret
+        ret=ret.lower()
         return ret == "true" or ret == "yes"
 
 
